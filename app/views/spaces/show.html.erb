@@ -1,0 +1,15 @@
+<div class="page-container">
+    <div>
+        <h1>#<%= @space.name %></h1>
+        <p><%= @space.description%></p>
+    </div>
+    <div>
+        <% @space.posts.each do |post|%>
+            <div class="card-post">
+                <h2><%= post.title %></h2>
+                <p><%= post.content %></p>
+            </div>
+        <% end %>
+    </div>
+
+</div>
