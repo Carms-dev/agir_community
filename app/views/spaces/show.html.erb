@@ -1,15 +1,19 @@
 <div class="page-container">
     <div>
+        <p>render box to create post</p>
+    </div>
+    <div>
         <h1>#<%= @space.name %></h1>
         <p><%= @space.description%></p>
     </div>
     <div>
         <% @space.posts.each do |post|%>
-            <div class="card-post">
-                <h2><%= post.title %></h2>
-                <p><%= post.content %></p>
-            </div>
+            <%= link_to post_path(post) do%>
+                <div class="card-post">
+                    <h2><%= post.title %></h2>
+                    <p><%= post.content %></p>
+                </div>
+            <% end %>
         <% end %>
     </div>
-
 </div>

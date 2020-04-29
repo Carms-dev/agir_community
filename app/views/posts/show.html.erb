@@ -1,0 +1,18 @@
+<div class="page-container">
+    <div class="card-post">
+        <i class="author">
+            <span><%= @post.user.nickname %></span>
+            <small><%= @post.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+        </i>
+        <div class="card-post-content">
+            <h2><%= @post.title%></h2>
+            <p><%= @post.content %></p>
+        </div>
+        <div class="card-post-links">
+            <p>comment input render here</p>
+        </div>
+        <div class="input-comment">
+            <p>comments render here</p>
+        </div>
+    </div>
+</div>
