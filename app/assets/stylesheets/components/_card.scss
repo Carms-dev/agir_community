@@ -1,0 +1,20 @@
+.cards-space {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card-space {
+    width: 100%;
+    background-color: white;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+@media (min-width: 600px) {
+  /* For a screen < 720px, this CSS will be read */
+  .card-space {
+      width: 280px;
+  }
+}

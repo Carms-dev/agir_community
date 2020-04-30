@@ -1,0 +1,35 @@
+// General Set-up
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.btn-green-filled {
+    width: 160px;
+    background-color: $green;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px 15px;
+    color: white;
+}
+.btn-green-filled:hover {
+    border: 1px solid $green;
+    transition: 0.7s;
+    background-color: rgba($color: $green, $alpha: 0.8);
+    color: white;
+}
+
+.btn-green-outlined {
+    width: 160px;
+    border-radius: 5px;
+    margin: 10px;
+    border: 1px solid $green;
+    padding: 10px 15px;
+}
+.btn-green-outlined:hover {
+    transition: 0.7s;
+    background-color: rgba($color: $green, $alpha: 0.8);
+    color: white;
+}

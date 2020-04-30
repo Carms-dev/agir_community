@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, :nickname, uniqueness: true
+
+  has_one_attached :photo
 end

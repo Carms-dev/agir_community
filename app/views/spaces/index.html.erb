@@ -1,19 +1,39 @@
 <div class="page-container">
-    <% @spaces.each do |space| %>
-        <%= link_to space_path(space) do %>
-            <div class="card-space">
-                <h2><%= space.name %></h2>
-                <p><%= space.description %></p>
-                <div class="card-space-links">
-                    <%= link_to "Edit", edit_space_path(space) %>
-                    <%= link_to "Delete", 
-                        space_path(space),
-                        method: :delete,
-                        data: { confirm: "Are you sure?"} %>
-                </div>
-            </div>
-        <% end %>
-    <% end %>
+    <div class="banner-top">
+        <div class="banner-content">
+            <h1>Hi <strong><%= current_user.nickname.capitalize %></strong>!</h1>
+            <h5>Welcome to AGIR Montreal Community</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nulla facilisi morbi tempus iaculis. Et malesuada fames ac turpis egestas. Eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque. </p>
 
-    <%= link_to "+ space", new_space_path %>
+            <div class="banner-btns">
+                <%= link_to "#", class: "btn-green-filled" do %>
+                    <i class="fas fa-scroll"></i><span> View Rules</span>
+                <% end %>
+                <%= link_to new_space_path, class: "btn-green-outlined" do %>
+                    <i class="fas fa-plus"></i><span> Create Spaces</span>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="cards-space">
+        <% @spaces.each do |space| %>
+            <%= link_to space_path(space) do %>
+                <div class="card-space">
+                    <h4><%= space.name %></h4>
+                    <p><%= space.description %></p>
+                    <h5># Posts: <%= space.posts.count %></h5>
+                    <div class="card-space-links">
+                        <%= link_to edit_space_path(space), class: "btn-icon" do %>
+                            <i class="far fa-edit"></i>
+                        <% end %>
+                        <%= link_to space_path(space), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-icon"  do %>
+                            <i class="far fa-trash-alt"></i>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+
 </div>
