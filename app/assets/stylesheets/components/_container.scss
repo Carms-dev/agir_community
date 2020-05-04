@@ -1,0 +1,25 @@
+.container-form {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-page {
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  /* For a screen < 720px, this CSS will be read */
+  .container-page {
+      width: 600px;
+  }
+}
+// @media (min-width: 992px) {
+//   /* For a screen < 540px, this CSS will be read */
+// .page-container {
+//       width: 700px
+//   }
+// }

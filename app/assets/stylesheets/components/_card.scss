@@ -1,3 +1,61 @@
+// forms
+.card-form {
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        width: 80px;
+        object-fit: cover;
+    }
+
+    h1 {
+        font-size: 24px;
+        font-weight: 400;
+        padding-top: 4px;
+    }
+    
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        padding-top: 8px;
+    }
+}
+
+.card-form-inputs {
+    width: 300px;
+    margin-top: 12px;
+}
+
+.form-note {
+    p {
+        font-size: 12px;
+        margin: 0;
+    }
+}
+
+// general
+.card-text-btn {
+    border-radius: 5px;
+    border: 5px solid $light-green;
+    padding: 20px;
+    margin: 20px;
+
+    h3 {
+        font-size: 24px;
+    }
+    
+    p {
+        font-size: 12px;
+    }
+}
+
+// spaces
 .cards-space {
     display: flex;
     flex-wrap: wrap;
@@ -10,11 +68,20 @@
     margin: 10px;
     border-radius: 5px;
     padding: 10px;
+    
 }
 
 @media (min-width: 600px) {
   /* For a screen < 720px, this CSS will be read */
-  .card-space {
-      width: 280px;
+  .card-form {
+    width: 450px;
+    height: auto;
+    border: 1px solid $green;
+    border-radius: 5px;
+
   }
+  .card-space {
+    width: 280px;
+  }
+  
 }

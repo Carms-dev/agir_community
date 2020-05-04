@@ -6,6 +6,27 @@ a:hover {
     text-decoration: none;
 }
 
+.btn-text {
+    font-size: 12px;
+    margin: 24px 0 12px 0;
+    color: $yellow;
+}
+.btn-yellow-inline {
+    color: $yellow;
+}
+
+// old?
+.btn-yellow-filled {
+    background-color: $yellow;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 900;
+    color: white;
+    width: 100%;
+    padding: 10px auto;
+}
+
+
 .btn-green-filled {
     width: 160px;
     background-color: $green;

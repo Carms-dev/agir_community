@@ -1,19 +1,27 @@
-<div class="page-container">
+<div class="container-page">
     <div class="banner-top">
-        <div class="banner-content">
-            <h1>Hi <strong><%= current_user.nickname.capitalize %></strong>!</h1>
-            <h5>Welcome to AGIR Montreal Community</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nulla facilisi morbi tempus iaculis. Et malesuada fames ac turpis egestas. Eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque. </p>
+        <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
+        <% else %>
+            <%= image_tag "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <h1>Hi <strong><%= current_user.nickname.capitalize %></strong>!</h1>
+        <h5>Welcome to AGIR Montreal Community</h5>
+    </div>
 
-            <div class="banner-btns">
-                <%= link_to "#", class: "btn-green-filled" do %>
-                    <i class="fas fa-scroll"></i><span> View Rules</span>
-                <% end %>
-                <%= link_to new_space_path, class: "btn-green-outlined" do %>
-                    <i class="fas fa-plus"></i><span> Create Spaces</span>
-                <% end %>
-            </div>
-        </div>
+    <div class="card-text-btn">
+        <h3>Official Annoucement <i class="fas fa-bullhorn"></i></h3>
+        <p>This is a beta version of AGIR's community portal. It is introduced with the intention to build a safe queer migrate community online in response to the Covid-19 situaiton.  </p>
+        <p>The first phase is an online forum.  Futher development is contingent upon our member's needs.</p>
+        <hr>
+        <a href="#">Read More</a>
+    </div>
+
+    <div class="card-text-btn">
+        <h3>Participation Rules <i class="fas fa-scroll"></i></h3>
+        <p>Kindly refer to these rules for participation. Repeated violation of these rules may result in the suspension of your account.</p>
+        <hr>
+        <a href="#" class="">See All</a>
     </div>
 
     <div class="cards-space">
