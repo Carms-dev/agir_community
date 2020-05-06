@@ -6,6 +6,7 @@ class SpacesController < ApplicationController
     end
 
     def show
+        @post = Post.new
     end
     
     def new

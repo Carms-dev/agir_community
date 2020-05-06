@@ -22,11 +22,13 @@
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to root_path, class: "nav-link" do %>
-              <span><i class="fas fa-home"></i> Home</span>
+              <span class="iconify" data-icon="bx:bx-home-smile" data-inline="false"></span> Home
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "TBD", "#", class: "nav-link" %>
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fas fa-hands"></i> Support
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <% if current_user.photo.attached? %>

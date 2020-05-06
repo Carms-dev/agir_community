@@ -1,19 +1,56 @@
-<div class="page-container">
-    <div>
-        <p>render box to create post</p>
+<div class="container-page">
+    <div class="card-avatar-btn">
+        <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+        <% else %>
+            <%= image_tag "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <%= link_to '#', data: { toggle: "modal", target: "#createPostModal" } do %>
+            <span>What's on your mind, <%= current_user.nickname.capitalize %>?</span>
+        <% end %>
     </div>
+
     <div>
         <h1>#<%= @space.name %></h1>
         <p><%= @space.description%></p>
     </div>
-    <div>
+
+    <div class="cards-post">
         <% @space.posts.each do |post|%>
-            <%= link_to post_path(post) do%>
-                <div class="card-post">
+            <div class="card-post">
+
+                <%= link_to post_path(post) do%>
                     <h2><%= post.title %></h2>
-                    <p><%= post.content %></p>
-                </div>
-            <% end %>
+                <% end %>
+                <p><%= post.content %></p>
+            </div>
         <% end %>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="createPostModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-new-post">
+        <button type="button" class="close closed" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        <h2>Create Post in #<%= @space.name.capitalize %></h2>
+        <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
+        <% else %>
+            <%= image_tag "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <% end %>
+        <%= simple_form_for [ @space, @post ], html: { class: "modal-form"} do |f| %>
+            <%= f.input :content, as: :text, 
+                        :input_html => { :rows => 5 },
+                        label: false, 
+                        placeholder: "What's on your mind, #{current_user.nickname.capitalize}?" %>
+            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
+            <%= f.submit "Post", class: "btn-yellow-filled" %>
+        <% end %>
+        
+    </div>
+  </div>
 </div>
