@@ -1,4 +1,9 @@
 <div class="container-page">
+    <div>
+        <h1>#<%= @space.name %></h1>
+        <p><%= @space.description%></p>
+    </div>
+
     <div class="card-avatar-btn">
         <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar" %>
@@ -10,19 +15,53 @@
         <% end %>
     </div>
 
-    <div>
-        <h1>#<%= @space.name %></h1>
-        <p><%= @space.description%></p>
-    </div>
-
     <div class="cards-post">
-        <% @space.posts.each do |post|%>
+        <% @space.posts.reverse.each do |post|%>
             <div class="card-post">
+                <div class="card-post-head">
+                    <% if post.user.photo.attached? %>
+                        <%= cl_image_tag post.user.photo.key, class: "avatar" %>
+                    <% else %>
+                        <%= image_tag "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% end %>
+                    <div class="author">
+                        <h5><%= post.user.nickname.capitalize %></h5>
+                        <p><%= post.created_at.strftime("%a %b %e at %l:%M%p") %></p>
+                    </div>
 
-                <%= link_to post_path(post) do%>
-                    <h2><%= post.title %></h2>
-                <% end %>
-                <p><%= post.content %></p>
+                    <div class="btn-group btn-i">
+                        <i class="fas fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <%= link_to edit_post_path(post), class: "dropdown-item" do %>
+                                <i class="far fa-edit"></i> Edit Post
+                            <% end %>
+                            <%= link_to post_path(post), method: :delete, data: { confirm: "Are you sure?"}, class: "dropdown-item"  do %>
+                                <i class="far fa-trash-alt"></i> Delete Post
+                            <% end %>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Report Post</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-post-body">
+                    <p><%= post.content %></p>
+                    <% if post.photos.attached? %>
+                        <%= cl_image_tag post.photos[0].key, height: 550, width: 550, crop: :fill %>
+                    <% end %>
+                </div>
+
+                <div class="card-post-btns">
+                    <%= link_to "#" do %>
+                        <i class="far fa-thumbs-up"></i> Like
+                    <% end %>
+                    <%= link_to "#" do %>
+                        <i class="far fa-comment-alt"></i> Comment
+                    <% end %>
+                    <%= link_to "#" do %>
+                        <i class="far fa-bookmark"></i> Bookmark
+                    <% end %>
+                </div>
             </div>
         <% end %>
     </div>

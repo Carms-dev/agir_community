@@ -1,6 +1,6 @@
-// space show
+// posts
 .card-avatar-btn {
-    margin: 30px 5px;
+    margin: 10px;
     display: flex;
     align-items: center;
     border: 1px solid $green;
@@ -10,13 +10,89 @@
     img {
         margin: 10px;
     }
-
+    
     a {
         color: rgb( 150, 150, 150);
         font-size: 16px;
         line-height: 28px;
         cursor: text;
         flex-grow: 1;
+    }
+}
+.cards-post {
+    margin: 10px;
+}
+
+.card-post {
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid $green;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-post-head {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    img {
+        margin: 10px;
+    }
+
+    .btn-i {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+    }
+
+    i {
+        color: $yellow;
+    }
+
+    .author {
+        flex-grow: 1;
+
+        h5 {
+            font-size: 16px;
+            margin-bottom: 0;
+            color: $blue;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 12px;
+            margin-bottom: 0;
+            font-weight: 300;
+        }
+    }
+}
+
+.card-post-body {
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    p {
+        margin: 10px;
+        white-space: pre-wrap;
+    }
+}
+
+.card-post-btns {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;;
+    margin: 10px 10px 0 10px;
+    border-top: 1px solid $green;
+    a {
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        color: grey;
     }
 }
 
@@ -67,8 +143,8 @@
     border: 1px solid $green;
     background-color: white;
     padding: 20px;
-    margin: 20px;
-
+    margin: 10px;
+    
     h3 {
         font-size: 24px;
     }
@@ -87,6 +163,7 @@
 
 .card-space {
     width: 100%;
+    border: 1px solid $green;
     background-color: white;
     margin: 10px;
     border-radius: 5px;
