@@ -9,13 +9,14 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
-        @post.space = Space.find(params[:space_id])
+        @space = Space.find(params[:space_id])
+        @post.space = @space
         @post.user = current_user
         
         if @post.save
-            redirect_to space_path(@post.space)
+            redirect_to space_path(@space)
         else
-            render :new
+            render "spaces/show"
         end
     end
     
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
         if @post.update(post_params)
             redirect_to post_path(@post)
         else
-            render :edit
+            render "spaces/show"
         end
     end
     

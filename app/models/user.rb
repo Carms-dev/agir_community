@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
   validates :email, :nickname, uniqueness: true
 
-  has_one_attached :photo
+  has_one_attached :photo, dependent: :destroy
+
+  has_many :likes, dependent: :destroy
+  has_many :saves, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

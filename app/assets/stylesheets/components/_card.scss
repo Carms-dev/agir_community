@@ -77,8 +77,19 @@
         object-fit: cover;
     }
     p {
-        margin: 10px;
+        margin: 15px;
         white-space: pre-wrap;
+    }
+}
+
+.card-post-status {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    margin: 15px 20px 0 0;
+
+    p {
+        margin: 0;
     }
 }
 
@@ -89,10 +100,21 @@
     margin: 10px 10px 0 10px;
     border-top: 1px solid $green;
     a {
-        padding: 10px;
+        margin: 4px;
+        padding: 6px;
         font-size: 12px;
         font-weight: 700;
         color: grey;
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    a:hover {
+        background-color: rgba(240, 240, 240, 0.8);
+    }
+
+    .btn-on {
+        color: $yellow;
     }
 }
 

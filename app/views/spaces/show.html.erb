@@ -17,7 +17,7 @@
 
     <div class="cards-post">
         <% @space.posts.reverse.each do |post|%>
-            <div class="card-post">
+            <div class="card-post" id="post-<%= post.id %>"">
                 <div class="card-post-head">
                     <% if post.user.photo.attached? %>
                         <%= cl_image_tag post.user.photo.key, class: "avatar" %>
@@ -26,7 +26,7 @@
                     <% end %>
                     <div class="author">
                         <h5><%= post.user.nickname.capitalize %></h5>
-                        <p><%= post.created_at.strftime("%a %b %e at %l:%M%p") %></p>
+                        <p><%= post.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%a %b %e at %l:%M%p") %></p>
                     </div>
 
                     <div class="btn-group btn-i">
@@ -47,27 +47,54 @@
                 <div class="card-post-body">
                     <p><%= post.content %></p>
                     <% if post.photos.attached? %>
-                        <%= cl_image_tag post.photos[0].key, height: 550, width: 550, crop: :fill %>
+                        <%= cl_image_tag post.photos[0].key, width: 550, crop: :fill %>
                     <% end %>
                 </div>
 
+                <div class="card-post-status">
+                    <p><%= pluralize( post.likes.count, 'Like' ) %></p>
+                    <p> •‎ </p>
+                    <p><%= pluralize( 1, 'Comment' ) %></p>
+                </div>
+
                 <div class="card-post-btns">
-                    <%= link_to "#" do %>
-                        <i class="far fa-thumbs-up"></i> Like
+                    <%# likes %>
+                    <% if Like.find_by(user_id: current_user.id, post_id: post.id) %>
+                        <%= link_to like_path(post), method: :delete, class: "btn-on" do %>
+                            <i class="far fa-thumbs-up"></i> Liked
+                        <% end %>
+                    <% else %>
+                        <%= link_to likes_path(post), method: :post do %>
+                            <i class="far fa-thumbs-up"></i> Like
+                        <% end %>
                     <% end %>
+
+                    <%# comments %>
                     <%= link_to "#" do %>
                         <i class="far fa-comment-alt"></i> Comment
                     <% end %>
-                    <%= link_to "#" do %>
-                        <i class="far fa-bookmark"></i> Bookmark
+                    
+                    <%# saves %>
+                    <% if Save.find_by(user_id: current_user.id, post_id: post.id) %>
+                        <%= link_to safe_path(post), method: :delete, class: "btn-on" do %>
+                            <i class="far fa-bookmark"></i> Saved
+                        <% end %>
+                    <% else %>
+                        <%= link_to saves_path(post), method: :post do %>
+                            <i class="far fa-bookmark"></i> Save
+                        <% end %>
                     <% end %>
                 </div>
+
+                <div class="card-post-comments">
+                </div>
+
             </div>
         <% end %>
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Create Post Modal -->
 <div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="createPostModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content modal-new-post">
