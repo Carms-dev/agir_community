@@ -179,18 +179,28 @@
 // spaces
 .cards-space {
     display: flex;
+    // justify-content: space-around;
     flex-wrap: wrap;
-    justify-content: space-between;
+
 }
 
 .card-space {
-    width: 100%;
+    text-align: center;
     border: 1px solid $green;
     background-color: white;
     margin: 10px;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
     
+    .icon {
+        font-size: 48px;
+    }
+    .h4 {
+        font-size: 36px;
+        font-weight: 600;
+    }
+    .p {
+    }
 }
 
 @media (min-width: 600px) {
